@@ -32,6 +32,8 @@ import {
   Tabs,
   Progress,
   Breadcrumb,
+  Switch,
+  Dropdown,
 } from "ant-design-vue";
 Vue.use(Button);
 Vue.use(Layout);
@@ -62,6 +64,8 @@ Vue.use(Skeleton);
 Vue.use(Tabs);
 Vue.use(Progress);
 Vue.use(Breadcrumb);
+Vue.use(Switch);
+Vue.use(Dropdown);
 Vue.prototype.$message = Message;
 Vue.prototype.$notification = Notification;
 Vue.prototype.$info = Modal.info;

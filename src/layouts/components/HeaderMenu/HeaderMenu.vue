@@ -1,7 +1,10 @@
 <template>
-  <div>
+  <div style="display:flex" >
+    <a-button type="primary" style="margin-bottom: 16px;">
+      <a-icon type="menu-unfold" />
+    </a-button>
     <a-menu
-      theme="dark"
+      :theme="navTheme"
       mode="horizontal"
       :default-selected-keys="['2']"
       :style="{ lineHeight: '64px' }"
@@ -18,3 +21,10 @@
     </a-menu>
   </div>
 </template>
+
+<script>
+import { mixin, mixinDevice } from "@/utils/mixin";
+export default {
+  mixins: [mixin, mixinDevice]
+}
+</script>
