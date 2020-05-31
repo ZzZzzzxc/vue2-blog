@@ -25,6 +25,19 @@
 <script>
 import { mixin, mixinDevice } from "@/utils/mixin";
 export default {
-  mixins: [mixin, mixinDevice]
+  mixins: [mixin, mixinDevice],
 };
 </script>
+
+<style lang="less" scoped>
+.ant-menu-horizontal > .ant-menu-item-active,
+.ant-menu-horizontal > .ant-menu-item-open,
+.ant-menu-horizontal > .ant-menu-item-selected,
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item:hover,
+.ant-menu-horizontal > .ant-menu-submenu-active,
+.ant-menu-horizontal > .ant-menu-submenu-open,
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu-selected,
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu:hover {
+  color: white;
+}
+</style>
