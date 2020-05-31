@@ -1,5 +1,5 @@
 <template>
-  <div style="display:flex" >
+  <div style="display:flex">
     <a-button type="primary" style="margin-bottom: 16px;">
       <a-icon type="menu-unfold" />
     </a-button>
@@ -26,5 +26,5 @@
 import { mixin, mixinDevice } from "@/utils/mixin";
 export default {
   mixins: [mixin, mixinDevice]
-}
+};
 </script>

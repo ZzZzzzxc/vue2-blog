@@ -16,7 +16,7 @@
           width: '100%',
           display: 'flex',
           'justify-content': 'space-between',
-          'flex-direction': isSideMenu() ? 'row-reverse' : 'row',
+          'flex-direction': isSideMenu() ? 'row-reverse' : 'row'
         }"
       >
         <HeaderMenu v-if="isTopMenu()" />
@@ -52,9 +52,9 @@ export default {
   mixins: [mixin, mixinDevice],
   data() {
     return {
-      collapsed: false,
+      collapsed: false
     };
   },
-  components: { SideMenu, Logo, SettingDrawer, HeaderMenu, UserMenu },
+  components: { SideMenu, Logo, SettingDrawer, HeaderMenu, UserMenu }
 };
 </script>

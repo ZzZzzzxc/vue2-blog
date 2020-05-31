@@ -192,7 +192,7 @@
                     slot="title"
                     :style="{
                       textDecoration:
-                        layoutMode === 'topmenu' ? 'line-through' : 'unset'
+                        layoutMode === 'topmenu' ? 'line-through' : 'unset',
                     }"
                   >
                     固定侧边菜单
@@ -213,14 +213,14 @@
 </template>
 
 <script>
-import { colorList } from "./settingConfig";
+import { colorList, updateTheme } from "./settingConfig";
 import { mixin, mixinDevice } from "@/utils/mixin";
 export default {
   mixins: [mixin, mixinDevice],
   data() {
     return {
       visible: false,
-      colorList
+      colorList,
     };
   },
   watch: {},
@@ -233,17 +233,22 @@ export default {
       this.visible = !this.visible;
     },
     handleLayout(layout) {
-      this.$store.commit('setLayout',layout)
+      this.$store.commit("setLayout", layout);
     },
     handleContentWidthChange() {},
-    changeColor() {},
+    changeColor(color) {
+      if (this.primaryColor !== color) {
+        this.$store.dispatch("setColor", color);
+        updateTheme(color);
+      }
+    },
     handleFixedHeader() {},
     handleFixedHeaderHidden() {},
     handleFixSiderbar() {},
     handleMenuTheme(theme) {
-      this.$store.commit('setTheme',theme)
-    }
-  }
+      this.$store.commit("setTheme", theme);
+    },
+  },
 };
 </script>
 

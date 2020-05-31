@@ -16,19 +16,27 @@ const app = {
     fixSiderbar: false,
     // 自动隐藏头部导航栏
     autoHideHeader: false,
-    color: null,
+    // 主题色
+    color: "#1890FF",
     // 是否开启色弱模式
-    weak: false,
+    // weak: false
   },
   mutations: {
-    setTheme(state,theme){
-      state.theme = theme
+    setTheme(state, theme) {
+      state.theme = theme;
     },
-    setLayout(state,layout){
-      state.layout = layout
-    }
+    setLayout(state, layout) {
+      state.layout = layout;
+    },
+    setColor(state, color) {
+      state.color = color;
+    },
   },
-  actions: {},
+  actions: {
+    setColor(context, color) {
+      context.commit("setColor", color);
+    },
+  },
 };
 
 export default app;

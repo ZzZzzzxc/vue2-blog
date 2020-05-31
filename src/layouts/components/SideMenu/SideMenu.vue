@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a-menu :theme="navTheme" :default-selected-keys="['1']" mode="vertical">
+    <a-menu :theme="navTheme" :default-selected-keys="['1']" mode="inline">
       <a-menu-item key="1">
         <a-icon type="pie-chart" />
         <span>Option 1</span>
@@ -42,5 +42,5 @@
 import { mixin, mixinDevice } from "@/utils/mixin";
 export default {
   mixins: [mixin, mixinDevice]
-}
+};
 </script>

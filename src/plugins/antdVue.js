@@ -33,7 +33,7 @@ import {
   Progress,
   Breadcrumb,
   Switch,
-  Dropdown,
+  Dropdown
 } from "ant-design-vue";
 Vue.use(Button);
 Vue.use(Layout);

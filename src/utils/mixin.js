@@ -8,20 +8,18 @@ const mixin = {
       layoutMode: state => state.app.layout,
       // 主题
       navTheme: state => state.app.theme,
-      // 
+      // 主题色
       primaryColor: state => state.app.color,
-      // 色弱模式
-      colorWeak: state => state.app.weak,
       // 固定头部
       fixedHeader: state => state.app.fixedHeader,
       // 固定侧栏
       fixSiderbar: state => state.app.fixSiderbar,
-      // 
+      //
       contentWidth: state => state.app.contentWidth,
       // 自动隐藏头部
       autoHideHeader: state => state.app.autoHideHeader,
       // 侧栏是否打开
-      sidebarOpened: state => state.app.sidebar,
+      sidebarOpened: state => state.app.sidebar
     })
   },
   methods: {
