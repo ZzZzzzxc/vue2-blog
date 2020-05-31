@@ -4,8 +4,10 @@
 
 <style lang="less" scoped>
 .logo {
-  height: 32px;
   background: rgba(255, 255, 255, 0.2);
-  margin: 16px;
+  border-bottom: solid;
+  border-right: solid;
+  width: 200px;
+  height: 64px;
 }
 </style>

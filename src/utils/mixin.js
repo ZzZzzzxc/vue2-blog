@@ -14,7 +14,7 @@ const mixin = {
       fixedHeader: state => state.app.fixedHeader,
       // 固定侧栏
       fixSiderbar: state => state.app.fixSiderbar,
-      //
+      // 内容区宽度
       contentWidth: state => state.app.contentWidth,
       // 自动隐藏头部
       autoHideHeader: state => state.app.autoHideHeader,
@@ -28,6 +28,12 @@ const mixin = {
     },
     isSideMenu() {
       return !this.isTopMenu();
+    },
+    isDark(){
+      return this.navTheme === 'dark'
+    },
+    isLight(){
+      return !this.isDark()
     }
   }
 };
