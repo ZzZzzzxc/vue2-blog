@@ -7,7 +7,7 @@ export default function(router) {
     redirect: "/dashboard/analysis",
     children: [
       {
-        path: "analysis",
+        path: "/dashboard/analysis",
         name: "analysis",
         meta: {
           icon: "database",

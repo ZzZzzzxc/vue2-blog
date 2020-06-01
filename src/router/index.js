@@ -24,11 +24,11 @@ const rootRouter = {
     import(/* webpackChunkName: "layout" */ "../layouts/FormBasicLayout")
 };
 
-const redirectRouter = {
-  path: "*",
-  meta: { authority: ["guest", "admin"] },
-  redirect: "/home/page"
-};
+// const redirectRouter = {
+//   path: "*",
+//   meta: { authority: ["guest", "admin"] },
+//   redirect: "/posts/list",
+// };
 
 homePageRouter.forEach(route => route(rootRouter.children));
 othersRouter.forEach(route => route(publicRouter.children));
@@ -36,7 +36,11 @@ othersRouter.forEach(route => route(publicRouter.children));
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
-  routes: routes.concat([publicRouter, rootRouter, redirectRouter])
+  routes: routes.concat([
+    publicRouter,
+    rootRouter
+    // redirectRouter
+  ])
 });
 
 export default router;
