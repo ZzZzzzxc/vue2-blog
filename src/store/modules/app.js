@@ -1,7 +1,7 @@
 const app = {
   state: {
     // 侧栏是否展开
-    sidebar: true,
+    sidebar: false,
     // 设备
     device: "desktop",
     // 主题
@@ -17,7 +17,7 @@ const app = {
     // 自动隐藏头部导航栏
     autoHideHeader: false,
     // 主题色
-    color: "#1890FF",
+    color: "#1890FF"
     // 是否开启色弱模式
     // weak: false
   },
@@ -31,12 +31,15 @@ const app = {
     setColor(state, color) {
       state.color = color;
     },
+    setSidebar(state, sidebar) {
+      state.sidebar = sidebar;
+    }
   },
   actions: {
     setColor(context, color) {
       context.commit("setColor", color);
-    },
-  },
+    }
+  }
 };
 
 export default app;

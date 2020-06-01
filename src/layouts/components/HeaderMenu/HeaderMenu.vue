@@ -1,9 +1,6 @@
 <template>
   <div style="display:flex;align-items:center">
     <Logo />
-    <a-button type="primary">
-      <a-icon type="menu-unfold" />
-    </a-button>
     <a-menu
       :theme="navTheme"
       mode="horizontal"
@@ -25,9 +22,9 @@
 
 <script>
 import { mixin, mixinDevice } from "@/utils/mixin";
-import Logo from '../Logo'
+import Logo from "../Logo/index";
 export default {
   mixins: [mixin, mixinDevice],
-  components:{Logo}
+  components: { Logo }
 };
 </script>

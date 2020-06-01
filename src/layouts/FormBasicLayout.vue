@@ -1,10 +1,11 @@
 <template>
   <a-layout id="components-layout-demo-side" style="min-height: 100vh">
     <a-layout-sider
-      v-model="collapsed"
-      collapsible
       :theme="navTheme"
       v-if="isSideMenu()"
+      v-model="sidebarOpened"
+      :trigger="null"
+      collapsible
     >
       <Logo />
       <SideMenu />
@@ -16,16 +17,17 @@
           width: '100%',
           display: 'flex',
           'justify-content': 'space-between',
-          'flex-direction': isSideMenu() ? 'row-reverse' : 'row',
+          'flex-direction': isSideMenu() ? 'row' : 'row',
           'background-color': isSideMenu()
             ? isDark()
               ? 'white'
               : 'white'
             : isLight()
             ? 'white'
-            : '#001529',
+            : '#001529'
         }"
       >
+        <CollapsedButton v-if="isSideMenu()" />
         <HeaderMenu v-if="isTopMenu()" />
         <UserMenu />
       </a-layout-header>
@@ -49,19 +51,31 @@
 </template>
 <script>
 import SideMenu from "./components/SideMenu/SideMenu";
-import Logo from "./components/Logo";
+import Logo from "./components/Logo/index";
 import SettingDrawer from "./components/SettingDrawer/SettingDrawer";
 import HeaderMenu from "./components/HeaderMenu/HeaderMenu";
 import UserMenu from "./components/UserMenu/index";
+import CollapsedButton from "./components/CollapsedButton/index";
 import { mixin, mixinDevice } from "@/utils/mixin";
 export default {
   name: "FormBasicLayout",
   mixins: [mixin, mixinDevice],
   data() {
-    return {
-      collapsed: false,
-    };
+    return {};
   },
-  components: { SideMenu, Logo, SettingDrawer, HeaderMenu, UserMenu },
+  components: {
+    SideMenu,
+    Logo,
+    SettingDrawer,
+    HeaderMenu,
+    UserMenu,
+    CollapsedButton
+  }
 };
 </script>
+
+<style lang="less" scoped>
+.ant-layout-header {
+  padding: 0;
+}
+</style>

@@ -29,11 +29,11 @@ const mixin = {
     isSideMenu() {
       return !this.isTopMenu();
     },
-    isDark(){
-      return this.navTheme === 'dark'
+    isDark() {
+      return this.navTheme === "dark";
     },
-    isLight(){
-      return !this.isDark()
+    isLight() {
+      return !this.isDark();
     }
   }
 };

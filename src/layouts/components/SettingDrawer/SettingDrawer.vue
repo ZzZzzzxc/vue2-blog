@@ -192,7 +192,7 @@
                     slot="title"
                     :style="{
                       textDecoration:
-                        layoutMode === 'topmenu' ? 'line-through' : 'unset',
+                        layoutMode === 'topmenu' ? 'line-through' : 'unset'
                     }"
                   >
                     固定侧边菜单
@@ -220,7 +220,7 @@ export default {
   data() {
     return {
       visible: false,
-      colorList,
+      colorList
     };
   },
   watch: {},
@@ -233,6 +233,7 @@ export default {
       this.visible = !this.visible;
     },
     handleLayout(layout) {
+      this.$store.commit("setSidebar", false);
       this.$store.commit("setLayout", layout);
     },
     handleContentWidthChange() {},
@@ -247,8 +248,8 @@ export default {
     handleFixSiderbar() {},
     handleMenuTheme(theme) {
       this.$store.commit("setTheme", theme);
-    },
-  },
+    }
+  }
 };
 </script>
 
