@@ -1,52 +1,44 @@
 <template>
-  <div>
-    <span>/Home/</span>
-    <a-breadcrumb :routes="routes">
-      <template slot="itemRender" slot-scope="{ route, params, routes, paths }">
-        <span v-if="routes.indexOf(route) === routes.length - 1">
-          {{ route.meta.breadcrumbName || route.name }}
-        </span>
-        <router-link v-else :to="`${basePath}/${paths.join('/')}`">
-          {{ route.meta.breadcrumbName || route.name }}
-        </router-link>
-      </template>
-    </a-breadcrumb>
-    <br />
-  </div>
+  <a-breadcrumb class="breadcrumb">
+    <a-breadcrumb-item v-for="(item, index) in breadList" :key="item.name">
+      <router-link
+        v-if="item.name != name && index != 1"
+        :to="{ path: item.path === '' ? '/' : item.path }"
+        >{{ item.meta.title }}</router-link
+      >
+      <span v-else>{{ item.meta.title }}</span>
+    </a-breadcrumb-item>
+  </a-breadcrumb>
 </template>
+
 <script>
 export default {
-  props: {
-    routeName: {
-      type: String,
-      default: "",
-      required: true,
-    },
-  },
   data() {
     return {
-      basePath: "",
-      routes: [],
+      name: "",
+      breadList: [],
     };
   },
+  created() {
+    this.getBreadcrumb();
+  },
   methods: {
-    initData() {
-      const routes = this.$router.options.routes;
-      for (let item of routes) {
-        let children = item.children;
-        if (!children) continue;
-        for (let child of children) {
-          if (child.name === this.routeName) {
-            this.routes.push(child);
-          }
-        }
-      }
-      return;
+    getBreadcrumb() {
+      this.breadList = [];
+      this.name = this.$route.name;
+      this.$route.matched.forEach((item) => {
+        this.breadList.push(item);
+      });
+      console.log(this.name)
+      console.log(this.breadList)
     },
   },
-  created() {
-    this.initData();
-    console.log(this.routes);
+  watch: {
+    $route() {
+      this.getBreadcrumb();
+    },
   },
 };
 </script>
+
+<style scoped></style>
