@@ -36,7 +36,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@import "../../../styles/theme.less";
+@import "@/styles/theme.less";
 .logo {
   height: @topmenu-height;
   line-height: @topmenu-height;

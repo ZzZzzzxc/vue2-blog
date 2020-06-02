@@ -16,7 +16,7 @@ export default {
   data() {
     return {
       name: "",
-      breadList: [],
+      breadList: []
     };
   },
   created() {
@@ -26,18 +26,16 @@ export default {
     getBreadcrumb() {
       this.breadList = [];
       this.name = this.$route.name;
-      this.$route.matched.forEach((item) => {
+      this.$route.matched.forEach(item => {
         this.breadList.push(item);
       });
-      console.log(this.name)
-      console.log(this.breadList)
-    },
+    }
   },
   watch: {
     $route() {
       this.getBreadcrumb();
-    },
-  },
+    }
+  }
 };
 </script>
 

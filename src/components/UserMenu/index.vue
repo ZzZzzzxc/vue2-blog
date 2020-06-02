@@ -39,7 +39,7 @@ export default {};
 </script>
 
 <style lang="less" scoped>
-@import "../../../styles/theme.less";
+@import "@/styles/theme.less";
 
 .user-wrapper {
   cursor: pointer;

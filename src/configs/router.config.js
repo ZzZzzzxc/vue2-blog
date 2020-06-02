@@ -9,7 +9,7 @@ export const constantRouterMap = [
     // name: "Home",
     meta: {
       icon: "form",
-      title: "Home",
+      title: "Home"
     },
     component: FormBasicLayout,
     redirect: "/post/list",
@@ -17,11 +17,11 @@ export const constantRouterMap = [
       {
         path: "/dashboard",
         name: "dashboard",
-        component: { render: (h) => h("router-view") },
+        component: { render: h => h("router-view") },
         meta: {
           icon: "form",
           title: "dashboard",
-          authority: ["guest", "admin"],
+          authority: ["guest", "admin"]
         },
         redirect: "/dashboard/analysis",
         children: [
@@ -31,19 +31,19 @@ export const constantRouterMap = [
             meta: {
               icon: "database",
               title: "analysis",
-              authority: ["guest", "admin"],
+              authority: ["guest", "admin"]
             },
             component: () =>
               import(
                 /* webpackChunkName: "common" */ "@/views/dashboard/analysis.vue"
-              ),
-          },
-        ],
+              )
+          }
+        ]
       },
       {
         path: "/post",
         name: "post",
-        component: { render: (h) => h("router-view") },
+        component: { render: h => h("router-view") },
         meta: { icon: "form", title: "post", authority: ["guest", "admin"] },
         redirect: "/post/create",
         children: [
@@ -54,10 +54,10 @@ export const constantRouterMap = [
               icon: "database",
               title: "create",
               authority: ["guest", "admin"],
-              breadcrumbIcon: "home",
+              breadcrumbIcon: "home"
             },
             component: () =>
-              import(/* webpackChunkName: "common" */ "@/views/posts/edit.vue"),
+              import(/* webpackChunkName: "common" */ "@/views/posts/edit.vue")
           },
           {
             path: "/post/list",
@@ -66,17 +66,17 @@ export const constantRouterMap = [
               icon: "database",
               title: "list",
               authority: ["guest", "admin"],
-              breadcrumbIcon: "home",
+              breadcrumbIcon: "home"
             },
             component: () =>
-              import(/* webpackChunkName: "common" */ "@/views/posts/list.vue"),
-          },
-        ],
+              import(/* webpackChunkName: "common" */ "@/views/posts/list.vue")
+          }
+        ]
       },
       {
         path: "/account",
         name: "account",
-        component: { render: (h) => h("router-view") },
+        component: { render: h => h("router-view") },
         meta: { icon: "form", title: "account", authority: ["guest", "admin"] },
         redirect: "/account/setting",
         children: [
@@ -86,12 +86,12 @@ export const constantRouterMap = [
             meta: {
               icon: "database",
               title: "setting",
-              authority: ["guest", "admin"],
+              authority: ["guest", "admin"]
             },
             component: () =>
               import(
                 /* webpackChunkName: "common" */ "@/views/account/setting.vue"
-              ),
+              )
           },
           {
             path: "/account/center",
@@ -99,16 +99,16 @@ export const constantRouterMap = [
             meta: {
               icon: "database",
               title: "center",
-              authority: ["guest", "admin"],
+              authority: ["guest", "admin"]
             },
             component: () =>
               import(
                 /* webpackChunkName: "common" */ "@/views/account/center.vue"
-              ),
-          },
-        ],
-      },
-    ],
+              )
+          }
+        ]
+      }
+    ]
   },
 
   {
@@ -117,14 +117,14 @@ export const constantRouterMap = [
     meta: {
       icon: "database",
       title: "center",
-      authority: ["guest", "admin"],
+      authority: ["guest", "admin"]
     },
     component: () =>
-      import(/* webpackChunkName: "fail" */ "@/views/exception/404"),
+      import(/* webpackChunkName: "fail" */ "@/views/exception/404")
   },
 
   {
     path: "*",
-    redirect: "/404",
-  },
+    redirect: "/404"
+  }
 ];

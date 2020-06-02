@@ -34,14 +34,14 @@ export default {
     return {
       menuData,
       selectedKeys: this.selectedKeysMap[this.$route.path],
-      openKeys: this.openKeysMap[this.$route.path],
+      openKeys: this.openKeysMap[this.$route.path]
     };
   },
   watch: {
     "$route.path": function(val) {
       this.selectedKeys = this.selectedKeysMap[val];
       this.openKeys = this.openKeysMap[val];
-    },
+    }
   },
   methods: {
     getMenuData(routes = [], parentKeys = [], selectedKey) {
@@ -55,7 +55,7 @@ export default {
           if (item.children && !item.hideChildrenInMenu) {
             newItem.children = this.getMenuData(item.children, [
               ...parentKeys,
-              item.path,
+              item.path
             ]);
           } else {
             this.getMenuData(
@@ -76,8 +76,8 @@ export default {
         }
       }
       return menuData;
-    },
-  },
+    }
+  }
 };
 </script>
 

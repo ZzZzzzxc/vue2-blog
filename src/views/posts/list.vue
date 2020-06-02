@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Breadcrumb from "../../components/breadcrumb";
+import Breadcrumb from "@/components/Breadcrumb";
 export default {
   name: "postsList",
   components: { Breadcrumb }

@@ -43,11 +43,11 @@
   </a-layout>
 </template>
 <script>
-import Menu from "./components/Menu/Menu";
-import Logo from "./components/Logo/index";
-import SettingDrawer from "./components/SettingDrawer/SettingDrawer";
-import UserMenu from "./components/UserMenu/index";
-import CollapsedButton from "./components/CollapsedButton/index";
+import Menu from "@/components/Menu";
+import Logo from "@/components/Logo";
+import SettingDrawer from "@/components/SettingDrawer";
+import UserMenu from "@/components/UserMenu";
+import CollapsedButton from "@/components/CollapsedButton";
 import { mixin, mixinDevice } from "@/utils/mixin";
 export default {
   name: "FormBasicLayout",
