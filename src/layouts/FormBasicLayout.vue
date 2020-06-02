@@ -25,7 +25,7 @@
               : 'white'
             : isLight()
             ? 'white'
-            : '#001529',
+            : '#001529'
         }"
       >
         <CollapsedButton v-if="isSideMenu()" />
@@ -60,8 +60,8 @@ export default {
     Logo,
     SettingDrawer,
     UserMenu,
-    CollapsedButton,
-  },
+    CollapsedButton
+  }
 };
 </script>
 
