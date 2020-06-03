@@ -33,7 +33,8 @@ import {
   Progress,
   Breadcrumb,
   Switch,
-  Dropdown
+  Dropdown,
+  Checkbox
 } from "ant-design-vue";
 Vue.use(Button);
 Vue.use(Layout);
@@ -66,6 +67,7 @@ Vue.use(Progress);
 Vue.use(Breadcrumb);
 Vue.use(Switch);
 Vue.use(Dropdown);
+Vue.use(Checkbox);
 Vue.prototype.$message = Message;
 Vue.prototype.$notification = Notification;
 Vue.prototype.$info = Modal.info;

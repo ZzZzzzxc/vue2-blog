@@ -50,7 +50,7 @@ import UserMenu from "@/components/UserMenu";
 import CollapsedButton from "@/components/CollapsedButton";
 import { mixin, mixinDevice } from "@/utils/mixin";
 export default {
-  name: "FormBasicLayout",
+  name: "BasicLayout",
   mixins: [mixin, mixinDevice],
   data() {
     return {};
