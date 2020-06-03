@@ -1,3 +1,4 @@
-import FormBasicLayout from "./FormBasicLayout";
+import BasicLayout from "./BasicLayout";
+import UserLayout from "./UserLayout";
 
-export { FormBasicLayout };
+export { BasicLayout, UserLayout };

@@ -9,9 +9,9 @@
                 'userName',
                 {
                   rules: [
-                    { required: true, message: 'Please input your username!' }
-                  ]
-                }
+                    { required: true, message: 'Please input your username!' },
+                  ],
+                },
               ]"
               placeholder="Username"
             >
@@ -28,9 +28,9 @@
                 'password',
                 {
                   rules: [
-                    { required: true, message: 'Please input your Password!' }
-                  ]
-                }
+                    { required: true, message: 'Please input your Password!' },
+                  ],
+                },
               ]"
               type="password"
               placeholder="Password"
@@ -48,8 +48,8 @@
                 'remember',
                 {
                   valuePropName: 'checked',
-                  initialValue: true
-                }
+                  initialValue: true,
+                },
               ]"
             >
               Remember me
@@ -80,7 +80,6 @@
 
 <script>
 export default {
-  name: "postsList",
   beforeCreate() {
     this.form = this.$form.createForm(this, { name: "normal_login" });
   },
@@ -92,8 +91,8 @@ export default {
           console.log("Received values of form: ", values);
         }
       });
-    }
-  }
+    },
+  },
 };
 </script>
 

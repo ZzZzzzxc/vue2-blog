@@ -14,7 +14,7 @@ const assetsCDN = {
     vue: "Vue",
     "vue-router": "VueRouter",
     vuex: "Vuex",
-    axios: "axios"
+    axios: "axios",
   },
   css: [],
   // https://unpkg.com/browse/vue@2.6.10/
@@ -22,22 +22,27 @@ const assetsCDN = {
     "//cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.min.js",
     "//cdn.jsdelivr.net/npm/vue-router@3.1.3/dist/vue-router.min.js",
     "//cdn.jsdelivr.net/npm/vuex@3.1.1/dist/vuex.min.js",
-    "//cdn.jsdelivr.net/npm/axios@0.19.0/dist/axios.min.js"
-  ]
+    "//cdn.jsdelivr.net/npm/axios@0.19.0/dist/axios.min.js",
+  ],
 };
 
 // vue.config.js
 const vueConfig = {
+  publicPath: "/",
+  outputDir: "dist",
+  assetsDir: "static",
+  lintOnSave: process.env.NODE_ENV === "development",
+  productionSourceMap: false,
   configureWebpack: {
     // webpack plugins
     plugins: [
       // Ignore all locale files of moment.js
-      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
+      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     ],
-    externals: isProd ? assetsCDN.externals : {}
+    externals: isProd ? assetsCDN.externals : {},
   },
 
-  chainWebpack: config => {
+  chainWebpack: (config) => {
     config.resolve.alias.set("@$", resolve("src"));
 
     const svgRule = config.module.rule("svg");
@@ -53,7 +58,7 @@ const vueConfig = {
       .use("file-loader")
       .loader("file-loader")
       .options({
-        name: "assets/[name].[hash:8].[ext]"
+        name: "assets/[name].[hash:8].[ext]",
       });
   },
 
@@ -64,21 +69,25 @@ const vueConfig = {
           modifyVars: {
             "primary-color": "#1DA57A",
             "link-color": "#1DA57A",
-            "border-radius-base": "2px"
+            "border-radius-base": "2px",
           },
           // DO NOT REMOVE THIS LINE
-          javascriptEnabled: true
-        }
-      }
-    }
+          javascriptEnabled: true,
+        },
+      },
+    },
   },
 
   devServer: {
-    port: 8080
+    port: 8080,
+    open: true,
+    overlay: {
+      warnings: false,
+      errors: true,
+    },
+    before: require("./mock/mock-server.js"),
   },
-  productionSourceMap: false,
-  lintOnSave: undefined,
-  transpileDependencies: []
+  transpileDependencies: [],
 };
 
 vueConfig.configureWebpack.plugins.push(createThemeColorReplacerPlugin());
