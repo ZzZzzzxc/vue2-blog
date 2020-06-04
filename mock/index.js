@@ -1,5 +1,5 @@
 const Mock = require("mockjs");
-const { param2Obj } = require("../src/utils/index");
+const { param2Obj } = require("./utils");
 const mocks = require("./controller/index");
 // for front mock
 // please use it cautiously, it will redefine XMLHttpRequest,
