@@ -42,7 +42,7 @@ class Localstorage {
   set(key, value, expire) {
     const stringifyValue = JSON.stringify({
       value,
-      expire: expire !== null ? new Date().getTime() + expire : null,
+      expire: expire !== null ? new Date().getTime() + expire : null
     });
     this.data.setItem(key, stringifyValue);
   }

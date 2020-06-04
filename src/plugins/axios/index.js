@@ -1,17 +1,16 @@
-import localStorage from "./localStorage";
+import service from "./axios";
 
-const Storage = {
+const Axios = {
   install(Vue, options) {
     if (!options) {
       return;
     }
-    const ls = new localStorage();
     Object.defineProperty(Vue.prototype, `$${options.name}`, {
       get() {
-        return ls;
+        return service;
       }
     });
   }
 };
 
-export default Storage;
+export default Axios;
