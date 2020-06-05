@@ -4,6 +4,7 @@ import router from "./router";
 import store from "./store";
 
 import "./plugins";
+import "./permission";
 
 Vue.config.productionTip = false;
 

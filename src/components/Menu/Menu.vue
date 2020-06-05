@@ -27,12 +27,18 @@ import { mixin, mixinDevice } from "@/utils/mixin";
 export default {
   mixins: [mixin, mixinDevice],
   components: { SubMenu, Logo },
+  props: {
+    addRouters: {
+      type: Array,
+      default: () => [],
+      required: false
+    }
+  },
   data() {
     this.selectedKeysMap = {};
     this.openKeysMap = {};
-    const menuData = this.getMenuData(this.$router.options.routes);
     return {
-      menuData,
+      menuData: this.getMenuData(this.addRouters),
       selectedKeys: this.selectedKeysMap[this.$route.path],
       openKeys: this.openKeysMap[this.$route.path]
     };

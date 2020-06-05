@@ -2,14 +2,27 @@ const tokens = {
   admin: {
     token: "admin-token",
   },
-  editor: {
-    token: "editor-token",
-  },
 };
 
 const users = {
   "admin-token": {
-    roles: ["admin"],
+    role: {
+      id: "admin",
+      name: "管理员",
+      describe: "any thing",
+      permissions: [
+        {
+          roleId: "admin",
+          permissionId: "dashboard",
+          permissionName: "仪表盘",
+        },
+        {
+          roleId: "admin",
+          permissionId: "account",
+          permissionName: "账户管理",
+        },
+      ],
+    },
     avatar: "https://cdn.zhangxc.cn/image/jpeg/2020-05-19 230011.jpg",
     name: "zhang xue cong",
     info: {
@@ -19,11 +32,6 @@ const users = {
       email: "731458684@qq.com",
     },
   },
-  "editor-token": {
-    roles: ["editor"],
-    avatar: "https://cdn.zhangxc.cn/image/jpeg/2020-05-19 230011.jpg",
-    name: "Normal Editor",
-  },
 };
 
 module.exports = [
@@ -32,37 +40,35 @@ module.exports = [
     url: "/user/login",
     type: "post",
     response: (config) => {
-      const { username } = config.body;
-      const token = tokens[username];
-
+      const { userName } = config.body;
+      const token = tokens[userName];
       // mock error
       if (!token) {
         return {
           code: 500,
-          message: "Account and password are incorrect.",
+          message: "账号或密码错误😂",
         };
       }
-
+      const res = { ...config.body, ...token };
       return {
         code: 200,
-        data: token,
+        data: res,
       };
     },
   },
 
   // get user info
   {
-    url: "/user/info.*",
+    url: "/user/info",
     type: "get",
     response: (config) => {
       const { token } = config.query;
       const info = users[token];
-
       // mock error
       if (!info) {
         return {
           code: 500,
-          message: "Login failed, unable to get user details.",
+          message: "未能正确获取用户信息",
         };
       }
 
@@ -72,15 +78,17 @@ module.exports = [
       };
     },
   },
-
   // user logout
   {
-    url: "/vue-admin-template/user/logout",
-    type: "post",
+    url: "/user/logout",
+    type: "get",
     response: () => {
+      const res = {
+        message: "用户成功退出登录",
+      };
       return {
-        code: 20000,
-        data: "success",
+        code: 200,
+        data: res,
       };
     },
   },

@@ -9,11 +9,11 @@
                 'userName',
                 {
                   rules: [
-                    { required: true, message: 'Please input your username!' },
-                  ],
-                },
+                    { required: true, message: 'Please input your username!' }
+                  ]
+                }
               ]"
-              placeholder="Username"
+              placeholder="账号：admin"
             >
               <a-icon
                 slot="prefix"
@@ -28,12 +28,12 @@
                 'password',
                 {
                   rules: [
-                    { required: true, message: 'Please input your Password!' },
-                  ],
-                },
+                    { required: true, message: 'Please input your Password!' }
+                  ]
+                }
               ]"
               type="password"
-              placeholder="Password"
+              placeholder="密码随意"
             >
               <a-icon
                 slot="prefix"
@@ -48,8 +48,8 @@
                 'remember',
                 {
                   valuePropName: 'checked',
-                  initialValue: true,
-                },
+                  initialValue: true
+                }
               ]"
             >
               Remember me
@@ -83,16 +83,26 @@ export default {
   beforeCreate() {
     this.form = this.$form.createForm(this, { name: "normal_login" });
   },
+  created() {},
   methods: {
+    handleLogin(parameter) {
+      this.$store.dispatch("Login", parameter).then(res => {
+        if (res.code === 200) {
+          this.$router.push({ path: "/" });
+          this.$message.success("登录成功");
+        }
+      });
+    },
+
     handleSubmit(e) {
       e.preventDefault();
       this.form.validateFields((err, values) => {
         if (!err) {
-          console.log("Received values of form: ", values);
+          this.handleLogin(values);
         }
       });
-    },
-  },
+    }
+  }
 };
 </script>
 

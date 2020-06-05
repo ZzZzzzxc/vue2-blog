@@ -24,7 +24,7 @@
         </a-menu-item>
         <a-menu-divider />
         <a-menu-item key="3">
-          <a href="javascript:;">
+          <a href="javascript:;" @click="handleLogout">
             <a-icon type="logout" />
             <span>退出登录</span>
           </a>
@@ -35,7 +35,21 @@
 </template>
 
 <script>
-export default {};
+import { mapActions } from "vuex";
+export default {
+  name: "UserMenu",
+  methods: {
+    ...mapActions(["Logout"]),
+    handleLogout() {
+      this.Logout().then(res => {
+        if (res.code === 200) {
+          this.$router.push({ path: "/user/login" });
+          this.$message.success("退出成功");
+        }
+      });
+    }
+  }
+};
 </script>
 
 <style lang="less" scoped>

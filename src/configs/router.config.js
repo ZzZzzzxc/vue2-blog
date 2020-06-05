@@ -1,8 +1,6 @@
-import { FormBasicLayout } from "@/layouts";
+import { BasicLayout, UserLayout } from "@/layouts";
 
-export const asyncRouterMap = [];
-
-export const constantRouterMap = [
+export const asyncRouterMap = [
   {
     path: "/",
     // 顶层路由不设置名字，否则会渲染进菜单栏
@@ -11,7 +9,7 @@ export const constantRouterMap = [
       icon: "form",
       title: "Home"
     },
-    component: FormBasicLayout,
+    component: BasicLayout,
     redirect: "/post/list",
     children: [
       {
@@ -21,7 +19,7 @@ export const constantRouterMap = [
         meta: {
           icon: "form",
           title: "dashboard",
-          authority: ["guest", "admin"]
+          permission: ["dashboard"]
         },
         redirect: "/dashboard/analysis",
         children: [
@@ -31,7 +29,7 @@ export const constantRouterMap = [
             meta: {
               icon: "database",
               title: "analysis",
-              authority: ["guest", "admin"]
+              permission: ["dashboard"]
             },
             component: () =>
               import(
@@ -44,7 +42,7 @@ export const constantRouterMap = [
         path: "/post",
         name: "post",
         component: { render: h => h("router-view") },
-        meta: { icon: "form", title: "post", authority: ["guest", "admin"] },
+        meta: { icon: "form", title: "post", permission: ["post"] },
         redirect: "/post/create",
         children: [
           {
@@ -53,7 +51,7 @@ export const constantRouterMap = [
             meta: {
               icon: "database",
               title: "create",
-              authority: ["guest", "admin"],
+              permission: ["post"],
               breadcrumbIcon: "home"
             },
             component: () =>
@@ -65,7 +63,7 @@ export const constantRouterMap = [
             meta: {
               icon: "database",
               title: "list",
-              authority: ["guest", "admin"],
+              permission: ["post"],
               breadcrumbIcon: "home"
             },
             component: () =>
@@ -77,7 +75,7 @@ export const constantRouterMap = [
         path: "/account",
         name: "account",
         component: { render: h => h("router-view") },
-        meta: { icon: "form", title: "account", authority: ["guest", "admin"] },
+        meta: { icon: "form", title: "account", permission: ["account"] },
         redirect: "/account/setting",
         children: [
           {
@@ -86,7 +84,7 @@ export const constantRouterMap = [
             meta: {
               icon: "database",
               title: "setting",
-              authority: ["guest", "admin"]
+              permission: ["account"]
             },
             component: () =>
               import(
@@ -99,7 +97,7 @@ export const constantRouterMap = [
             meta: {
               icon: "database",
               title: "center",
-              authority: ["guest", "admin"]
+              permission: ["account"]
             },
             component: () =>
               import(
@@ -112,19 +110,44 @@ export const constantRouterMap = [
   },
 
   {
+    path: "*",
+    redirect: "/404"
+  }
+];
+
+export const constantRouterMap = [
+  {
+    path: "/user",
+    // 顶层路由不设置名字，否则会渲染进菜单栏
+    // name: "Home",
+    meta: {
+      icon: "form",
+      title: "public"
+    },
+    component: UserLayout,
+    redirect: "/user/login",
+    children: [
+      {
+        path: "login",
+        name: "login",
+        meta: {
+          icon: "form",
+          title: "login"
+        },
+        component: () =>
+          import(/* webpackChunkName: "common" */ "@/views/user/Login.vue")
+      }
+    ]
+  },
+
+  {
     name: "404",
     path: "/404",
     meta: {
       icon: "database",
-      title: "center",
-      authority: ["guest", "admin"]
+      title: "center"
     },
     component: () =>
       import(/* webpackChunkName: "fail" */ "@/views/exception/404")
-  },
-
-  {
-    path: "*",
-    redirect: "/404"
   }
 ];

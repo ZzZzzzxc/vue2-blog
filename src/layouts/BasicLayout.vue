@@ -9,7 +9,7 @@
       :width="256"
     >
       <Logo />
-      <Menu />
+      <Menu :addRouters="addRouters" />
     </a-layout-sider>
     <a-layout>
       <a-layout-header
@@ -29,7 +29,7 @@
         }"
       >
         <CollapsedButton v-if="isSideMenu()" />
-        <Menu v-if="isTopMenu()" />
+        <Menu v-if="isTopMenu()" :addRouters="addRouters" />
         <UserMenu />
       </a-layout-header>
       <a-layout-content style="margin: 0 16px">
@@ -49,6 +49,7 @@ import SettingDrawer from "@/components/SettingDrawer";
 import UserMenu from "@/components/UserMenu";
 import CollapsedButton from "@/components/CollapsedButton";
 import { mixin, mixinDevice } from "@/utils/mixin";
+import { mapState } from "vuex";
 export default {
   name: "BasicLayout",
   mixins: [mixin, mixinDevice],
@@ -61,6 +62,12 @@ export default {
     SettingDrawer,
     UserMenu,
     CollapsedButton
+  },
+  computed: {
+    ...mapState({
+      // 动态主路由
+      addRouters: state => state.permission.addRouters
+    })
   }
 };
 </script>

@@ -8,6 +8,7 @@
 import Breadcrumb from "@/components/Breadcrumb";
 export default {
   name: "postsList",
-  components: { Breadcrumb }
+  components: { Breadcrumb },
+  created() {}
 };
 </script>
