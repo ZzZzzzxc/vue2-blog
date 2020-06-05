@@ -2,12 +2,8 @@
   <div class="user-wrapper">
     <a-dropdown>
       <span class="user-dropdown-menu">
-        <a-avatar
-          class="avatar"
-          size="small"
-          src="https://cdn.zhangxc.cn/image/jpeg/2020-05-19 230011.jpg"
-        />
-        <span>zhangxc</span>
+        <a-avatar class="avatar" size="small" :src="avatar" />
+        <span>{{ nickname }}</span>
       </span>
       <a-menu slot="overlay">
         <a-menu-item key="0">
@@ -35,20 +31,21 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 export default {
   name: "UserMenu",
+  computed: { ...mapGetters(["nickname", "avatar"]) },
   methods: {
     ...mapActions(["Logout"]),
     handleLogout() {
-      this.Logout().then(res => {
+      this.Logout().then((res) => {
         if (res.code === 200) {
           this.$router.push({ path: "/user/login" });
           this.$message.success("退出成功");
         }
       });
-    }
-  }
+    },
+  },
 };
 </script>
 
