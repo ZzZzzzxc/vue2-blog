@@ -12,27 +12,10 @@
       <Menu :addRouters="addRouters" />
     </a-layout-sider>
     <a-layout>
-      <a-layout-header
-        :style="{
-          zIndex: 1,
-          width: '100%',
-          display: 'flex',
-          'justify-content': 'space-between',
-          'flex-direction': isSideMenu() ? 'row' : 'row',
-          'background-color': isSideMenu()
-            ? isDark()
-              ? 'white'
-              : 'white'
-            : isLight()
-            ? 'white'
-            : '#001529'
-        }"
+      <GlobalHeader />
+      <a-layout-content
+        :style="{ margin: '0 16px', paddingTop: fixedHeader ? '64px' : '0' }"
       >
-        <CollapsedButton v-if="isSideMenu()" />
-        <Menu v-if="isTopMenu()" :addRouters="addRouters" />
-        <UserMenu />
-      </a-layout-header>
-      <a-layout-content style="margin: 0 16px">
         <router-view :key="$route.fullPath" />
       </a-layout-content>
       <a-layout-footer style="text-align: center">
@@ -46,8 +29,7 @@
 import Menu from "@/components/Menu";
 import Logo from "@/components/Logo";
 import SettingDrawer from "@/components/SettingDrawer";
-import UserMenu from "@/components/UserMenu";
-import CollapsedButton from "@/components/CollapsedButton";
+import GlobalHeader from "@/components/GlobalHeader";
 import { mixin, mixinDevice } from "@/utils/mixin";
 import { mapState } from "vuex";
 export default {
@@ -60,8 +42,7 @@ export default {
     Menu,
     Logo,
     SettingDrawer,
-    UserMenu,
-    CollapsedButton
+    GlobalHeader
   },
   computed: {
     ...mapState({
@@ -72,8 +53,4 @@ export default {
 };
 </script>
 
-<style lang="less" scoped>
-.ant-layout-header {
-  padding: 0;
-}
-</style>
+<style lang="less" scoped></style>

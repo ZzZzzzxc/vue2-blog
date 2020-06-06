@@ -1,6 +1,7 @@
 import Vue from "vue";
 import { login, getUserInfo, logout } from "@/api/modules/user";
 import notification from "ant-design-vue/es/notification";
+import { ACCESS_TOKEN } from "../mutation-type";
 
 const user = {
   state: {
@@ -39,12 +40,14 @@ const user = {
     Login({ commit }, userInfo) {
       Vue.prototype.$log.store("ACTION", "Login");
       return new Promise((resolve, reject) => {
+        // 调用登录接口
         login(userInfo)
           .then(response => {
             const { data, code, message } = response;
             if (code === 200) {
+              // 登录成功则在localStorage和Vuex中存储token
               Vue.prototype.$ls.set(
-                "ACCESS_TOKEN",
+                ACCESS_TOKEN,
                 data.token,
                 7 * 24 * 60 * 60 * 1000
               );
@@ -66,11 +69,14 @@ const user = {
     // 获取用户信息
     GetUserInfo({ commit }) {
       Vue.prototype.$log.store("ACTION", "GetUserInfo");
-      const token = Vue.prototype.$ls.get("ACCESS_TOKEN");
+      // 从localStorage中获取token
+      const token = Vue.prototype.$ls.get(ACCESS_TOKEN);
       return new Promise((resolve, reject) => {
+        // 调用获取用户信息接口
         getUserInfo(token)
           .then(response => {
             const data = response.data;
+            // 接口返回的数据中包含权限信息
             if (data.role && data.role.permissions.length > 0) {
               const role = data.role;
               role.permissions = data.role.permissions;
@@ -119,7 +125,7 @@ const user = {
           .finally(() => {
             commit("setToken", "");
             commit("setRole", []);
-            Vue.prototype.$ls.remove("ACCESS_TOKEN");
+            Vue.prototype.$ls.remove(ACCESS_TOKEN);
           });
       });
     }

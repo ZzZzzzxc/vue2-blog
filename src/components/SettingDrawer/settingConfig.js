@@ -45,4 +45,11 @@ const updateTheme = newPrimaryColor => {
   });
 };
 
-export { updateTheme, colorList };
+const updateColorWeak = colorWeak => {
+  const app = document.body.querySelector("#app");
+  colorWeak
+    ? app.classList.add("colorWeak")
+    : app.classList.remove("colorWeak");
+};
+
+export { updateTheme, updateColorWeak, colorList };

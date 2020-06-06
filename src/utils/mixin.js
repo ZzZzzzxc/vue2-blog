@@ -19,7 +19,11 @@ const mixin = {
       // 自动隐藏头部
       autoHideHeader: state => state.app.autoHideHeader,
       // 侧栏是否打开
-      sidebarOpened: state => state.app.sidebar
+      sidebarOpened: state => state.app.sidebar,
+      // 是否开启多页签模式
+      multiTab: state => state.app.multiTab,
+      // 是否开启色弱模式
+      colorWeak: state => state.app.weak
     })
   },
   methods: {

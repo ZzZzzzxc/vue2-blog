@@ -6,6 +6,7 @@ import router from "./router";
 import store from "./store";
 
 import "./permission";
+import "./styles/global.less";
 
 Vue.config.productionTip = false;
 

@@ -56,6 +56,7 @@ export default {
   cursor: pointer;
   transition: 0.3s;
   margin: @item-padding;
+  float: right;
   &:hover {
     background-color: @grey;
   }

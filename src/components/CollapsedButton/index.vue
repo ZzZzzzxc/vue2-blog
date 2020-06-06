@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="collapsed-btn-wrapper">
     <a-icon
       class="trigger"
       :type="sidebarOpened ? 'menu-unfold' : 'menu-fold'"
@@ -15,21 +15,26 @@ export default {
   mixins: [mixin],
   methods: {
     toggleCollapsed() {
-      this.$store.commit("setSidebar", !this.sidebarOpened);
+      this.$store.dispatch("setSidebar", !this.sidebarOpened);
     }
   }
 };
 </script>
 
 <style lang="less" scoped>
-.trigger {
-  font-size: 18px;
-  line-height: 64px;
-  padding: 0 24px;
-  cursor: pointer;
-  transition: color 0.3s;
-  &:hover {
-    color: #1890ff;
+.collapsed-btn-wrapper {
+  display: inline-block;
+  width: 80px;
+  padding: 0 12px;
+  .trigger {
+    font-size: 18px;
+    line-height: 64px;
+    padding: 0 24px;
+    cursor: pointer;
+    transition: color 0.3s;
+    &:hover {
+      color: #1890ff;
+    }
   }
 }
 </style>

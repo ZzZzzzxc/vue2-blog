@@ -203,6 +203,35 @@
           </div>
         </div>
         <a-divider />
+        <div :style="{ marginBottom: '24px' }">
+          <h3 class="setting-drawer-index-title">其他设置</h3>
+          <div>
+            <a-list :split="false">
+              <a-list-item>
+                <a-switch
+                  slot="actions"
+                  size="small"
+                  :defaultChecked="colorWeak"
+                  @change="handleColorWeak"
+                />
+                <a-list-item-meta>
+                  <div slot="title">色弱模式</div>
+                </a-list-item-meta>
+              </a-list-item>
+              <a-list-item>
+                <a-switch
+                  slot="actions"
+                  size="small"
+                  :defaultChecked="multiTab"
+                  @change="handleMultiTab"
+                />
+                <a-list-item-meta>
+                  <div slot="title">多页签模式</div>
+                </a-list-item-meta>
+              </a-list-item>
+            </a-list>
+          </div>
+        </div>
       </div>
       <div class="setting-drawer-index-handle" @click="toggle" slot="handle">
         <a-icon type="setting" v-if="!visible" />
@@ -213,7 +242,7 @@
 </template>
 
 <script>
-import { colorList, updateTheme } from "./settingConfig";
+import { colorList, updateTheme, updateColorWeak } from "./settingConfig";
 import { mixin, mixinDevice } from "@/utils/mixin";
 export default {
   mixins: [mixin, mixinDevice],
@@ -243,11 +272,22 @@ export default {
         updateTheme(color);
       }
     },
-    handleFixedHeader() {},
-    handleFixedHeaderHidden() {},
+    handleFixedHeader(fixed) {
+      this.$store.dispatch("setFixedHeader", fixed);
+    },
+    handleFixedHeaderHidden(autoHideHeader) {
+      this.$store.commit("setAutoHideHeader", autoHideHeader);
+    },
     handleFixSiderbar() {},
     handleMenuTheme(theme) {
       this.$store.commit("setTheme", theme);
+    },
+    handleMultiTab(multiTab) {
+      this.$store.commit("setMultiTab", multiTab);
+    },
+    handleColorWeak(weak) {
+      this.$store.commit("setWeak", weak);
+      updateColorWeak(weak);
     }
   }
 };

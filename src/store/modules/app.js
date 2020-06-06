@@ -17,9 +17,11 @@ const app = {
     // 自动隐藏头部导航栏
     autoHideHeader: false,
     // 主题色
-    color: "#1890FF"
+    color: "#1890FF",
     // 是否开启色弱模式
-    // weak: false
+    weak: false,
+    // 是否开启多页签模式
+    multiTab: false
   },
   mutations: {
     setTheme(state, theme) {
@@ -33,11 +35,29 @@ const app = {
     },
     setSidebar(state, sidebar) {
       state.sidebar = sidebar;
+    },
+    setFixedHeader(state, fixedHeader) {
+      state.fixedHeader = fixedHeader;
+    },
+    setAutoHideHeader(state, autoHideHeader) {
+      state.autoHideHeader = autoHideHeader;
+    },
+    setWeak(state, weak) {
+      state.weak = weak;
+    },
+    setMultiTab(state, multiTab) {
+      state.multiTab = multiTab;
     }
   },
   actions: {
     setColor(context, color) {
       context.commit("setColor", color);
+    },
+    setSidebar(context, sidebar) {
+      context.commit("setSidebar", sidebar);
+    },
+    setFixedHeader(context, fixedHeader) {
+      context.commit("setFixedHeader", fixedHeader);
     }
   }
 };
