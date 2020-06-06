@@ -1,9 +1,10 @@
 import Vue from "vue";
 import App from "./App.vue";
+// 如果要使用log插件中的file()，则需前置
+import "./plugins";
 import router from "./router";
 import store from "./store";
 
-import "./plugins";
 import "./permission";
 
 Vue.config.productionTip = false;
