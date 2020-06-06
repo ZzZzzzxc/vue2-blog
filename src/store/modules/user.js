@@ -37,7 +37,7 @@ const user = {
   actions: {
     // 登录
     Login({ commit }, userInfo) {
-      console.log(`[store-action] Login`);
+      Vue.prototype.$log.store("ACTION", "Login");
       return new Promise((resolve, reject) => {
         login(userInfo)
           .then(response => {
@@ -64,10 +64,11 @@ const user = {
     },
 
     // 获取用户信息
-    GetUserInfo({ commit, state }) {
-      console.log(`[store-action] GetUserInfo`);
+    GetUserInfo({ commit }) {
+      Vue.prototype.$log.store("ACTION", "GetUserInfo");
+      const token = Vue.prototype.$ls.get("ACCESS_TOKEN");
       return new Promise((resolve, reject) => {
-        getUserInfo(state.token)
+        getUserInfo(token)
           .then(response => {
             const data = response.data;
             if (data.role && data.role.permissions.length > 0) {
@@ -106,7 +107,7 @@ const user = {
 
     // 登出
     Logout({ commit, state }) {
-      console.log(`[store-action] Logout`);
+      Vue.prototype.$log.store("ACTION", "Logout");
       return new Promise(resolve => {
         logout(state.token)
           .then(response => {

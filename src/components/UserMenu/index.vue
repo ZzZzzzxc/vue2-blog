@@ -38,14 +38,14 @@ export default {
   methods: {
     ...mapActions(["Logout"]),
     handleLogout() {
-      this.Logout().then((res) => {
+      this.Logout().then(res => {
         if (res.code === 200) {
           this.$router.push({ path: "/user/login" });
           this.$message.success("退出成功");
         }
       });
-    },
-  },
+    }
+  }
 };
 </script>
 

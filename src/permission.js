@@ -11,11 +11,15 @@ const whiteList = ["login", "register", "registerResult"]; // no redirect whitel
 const defaultRoutePath = "/dashboard/analysis";
 const loginRoutePath = "/user/login";
 
+Vue.prototype.$log.file("@/permission.js");
+
 router.beforeEach((to, from, next) => {
-  NProgress.start(); // start progress bar
+  // 进度条开始
+  NProgress.start();
+  // 从localStorage中取token
   const token = Vue.prototype.$ls.get("ACCESS_TOKEN");
+  // 如果有token
   if (token) {
-    /* has token */
     if (to.path === loginRoutePath) {
       next({ path: defaultRoutePath });
       NProgress.done();

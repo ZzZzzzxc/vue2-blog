@@ -1,5 +1,8 @@
+import Vue from "vue";
 import api from "../index";
 import service from "../../plugins/axios/axios";
+
+Vue.prototype.$log.file("@api/modules/user.js");
 
 /**
  * login
@@ -11,7 +14,7 @@ import service from "../../plugins/axios/axios";
  * @returns {*}
  */
 export function login(parameter) {
-  console.log(`[POST] ${api.Login}`);
+  Vue.prototype.$log.api("POST", api.Login);
   return service({
     url: api.Login,
     method: "post",
@@ -29,7 +32,7 @@ export function login(parameter) {
  * @returns {*}
  */
 export function getUserInfo(token) {
-  console.log(`[GET] ${api.UserInfo}`);
+  Vue.prototype.$log.api("GET", api.UserInfo);
   return service({
     url: api.UserInfo,
     method: "get",
@@ -50,7 +53,7 @@ export function getUserInfo(token) {
  * @returns {*}
  */
 export function logout() {
-  console.log(`[GET] ${api.Logout}`);
+  Vue.prototype.$log.api("GET", api.Logout);
   return service({
     url: api.Logout,
     method: "get"
