@@ -45,7 +45,7 @@ export default {
       let activeKey = this.activeKey;
       let lastIndex;
       this.pageList.forEach((pane, i) => {
-        if (pane.key === targetKey) {
+        if (pane.path === targetKey) {
           lastIndex = i - 1;
         }
       });
@@ -58,17 +58,26 @@ export default {
         }
       }
       this.pageList = pageList;
-      this.activeKey = activeKey;
       if (this.pageList.length === 1) {
-        this.toggleClosed(false);
+        this.toggleClosed(false).then(() => {
+          this.activeKey = activeKey;
+        });
+      } else {
+        this.activeKey = activeKey;
       }
     },
     toggleClosed(flag) {
-      this.pageList[0].meta.closable = flag;
+      return new Promise((resolve) => {
+        this.pageList[0].meta.closable = flag;
+        resolve();
+      });
     },
   },
   created() {
     this.pageList.push(this.$route);
+    if (this.pageList.length === 1) {
+      this.toggleClosed(false);
+    }
   },
 };
 </script>
