@@ -21,7 +21,7 @@ const app = {
     // 是否开启色弱模式
     weak: false,
     // 是否开启多页签模式
-    multiTab: false
+    multiTab: true
   },
   mutations: {
     setTheme(state, theme) {

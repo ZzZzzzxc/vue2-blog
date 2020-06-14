@@ -4,5 +4,18 @@ import Logo from "./Logo";
 import Menu from "./Menu";
 import SettingDrawer from "./SettingDrawer";
 import UserMenu from "./UserMenu";
+import GlobalHeader from "./GlobalHeader";
+import MultiTab from "./MultiTab";
+import RouterView from "./RouterView";
 
-export { Breadcrumb, CollapsedButton, Logo, Menu, SettingDrawer, UserMenu };
+export {
+  Breadcrumb,
+  CollapsedButton,
+  Logo,
+  Menu,
+  SettingDrawer,
+  UserMenu,
+  GlobalHeader,
+  MultiTab,
+  RouterView
+};
