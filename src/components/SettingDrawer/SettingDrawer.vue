@@ -262,8 +262,8 @@ export default {
       this.visible = !this.visible;
     },
     handleLayout(layout) {
-      this.$store.commit("setSidebar", false);
-      this.$store.commit("setLayout", layout);
+      this.$store.dispatch("setSidebar", false);
+      this.$store.dispatch("setLayout", layout);
     },
     handleContentWidthChange() {},
     changeColor(color) {

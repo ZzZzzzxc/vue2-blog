@@ -21,7 +21,7 @@ const app = {
     // 是否开启色弱模式
     weak: false,
     // 是否开启多页签模式
-    multiTab: true
+    multiTab: true,
   },
   mutations: {
     setTheme(state, theme) {
@@ -47,7 +47,7 @@ const app = {
     },
     setMultiTab(state, multiTab) {
       state.multiTab = multiTab;
-    }
+    },
   },
   actions: {
     setColor(context, color) {
@@ -56,10 +56,13 @@ const app = {
     setSidebar(context, sidebar) {
       context.commit("setSidebar", sidebar);
     },
+    setLayout(context, layout) {
+      context.commit("setLayout", layout);
+    },
     setFixedHeader(context, fixedHeader) {
       context.commit("setFixedHeader", fixedHeader);
-    }
-  }
+    },
+  },
 };
 
 export default app;
