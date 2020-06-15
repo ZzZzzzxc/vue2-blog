@@ -1,14 +1,21 @@
 <template>
-  <div>
-    <Breadcrumb routeName="post" />
-  </div>
+  <PageLayout :title="title"
+    ><div style="height:300vh">{{ $route.path }}</div>
+  </PageLayout>
 </template>
 
 <script>
-import Breadcrumb from "@/components/Breadcrumb";
+import { PageLayout } from "@/layouts/index";
 export default {
-  name: "postsList",
-  components: { Breadcrumb },
-  created() {}
+  name: "PostList",
+  data() {
+    return {
+      title: "文章列表"
+    };
+  },
+  components: { PageLayout },
+  methods: {}
 };
 </script>
+
+<style></style>

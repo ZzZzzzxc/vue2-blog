@@ -67,7 +67,6 @@ export default {
       }
     },
     toggleClosed(flag) {
-      console.log(this.pageList)
       return new Promise(resolve => {
         this.pageList[0].meta.closable = flag;
         resolve();

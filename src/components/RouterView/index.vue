@@ -15,12 +15,12 @@
 <script>
 import { mapGetters } from "vuex";
 export default {
-  name: "RView",
+  name: "PageView",
   data() {
     return {};
   },
   computed: {
-    ...mapGetters(["multiTab"]),
-  },
+    ...mapGetters(["multiTab"])
+  }
 };
 </script>

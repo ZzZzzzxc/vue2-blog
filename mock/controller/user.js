@@ -21,6 +21,11 @@ const users = {
           permissionId: "account",
           permissionName: "账户管理",
         },
+        {
+          roleId: "admin",
+          permissionId: "post",
+          permissionName: "文章管理",
+        },
       ],
     },
     avatar: "https://cdn.zhangxc.cn/image/jpeg/2020-05-19 230011.jpg",

@@ -254,10 +254,10 @@ export default {
     };
   },
   watch: {},
-  mounted () {
-    updateTheme(this.primaryColor)
+  mounted() {
+    updateTheme(this.primaryColor);
     if (this.colorWeak !== config.colorWeak) {
-      updateColorWeak(this.colorWeak)
+      updateColorWeak(this.colorWeak);
     }
   },
   methods: {

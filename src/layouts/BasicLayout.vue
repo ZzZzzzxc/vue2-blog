@@ -18,7 +18,7 @@
         <RouterView />
       </a-layout-content>
       <a-layout-footer style="text-align: center">
-        Ant Design ©2018 Created by Ant UED
+        This is footer
       </a-layout-footer>
     </a-layout>
     <SettingDrawer />
@@ -31,7 +31,7 @@ import {
   Logo,
   Menu,
   MultiTab,
-  RouterView,
+  RouterView
 } from "@/components/index";
 import { mixin, mixinDevice } from "@/utils/mixin";
 import { mapState } from "vuex";
@@ -47,15 +47,20 @@ export default {
     SettingDrawer,
     GlobalHeader,
     MultiTab,
-    RouterView,
+    RouterView
   },
   computed: {
     ...mapState({
       // 动态主路由
-      addRouters: (state) => state.permission.addRouters,
-    }),
-  },
+      addRouters: state => state.permission.addRouters
+    })
+  }
 };
 </script>
 
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+@import "@/styles/theme.less";
+.ant-layout-sider {
+  border-right: 1px solid @grey;
+}
+</style>

@@ -7,10 +7,11 @@ import {
   AUTO_HIDE_HEADER,
   PRIMARY_COLOR,
   MULTI_TAB,
-  COLOR_WEAK,
+  COLOR_WEAK
 } from "../mutation-type";
 
 const app = {
+  // 初始值优先从 Localstorage 中取，其次从 @/configs/app.config.js中取
   state: {
     // 侧栏是否展开
     sidebar: false,
@@ -33,7 +34,7 @@ const app = {
     // 是否开启色弱模式
     weak: false,
     // 是否开启多页签模式
-    multiTab: true,
+    multiTab: true
   },
   mutations: {
     setTheme(state, theme) {
@@ -67,7 +68,7 @@ const app = {
     setMultiTab(state, multiTab) {
       Vue.prototype.$ls.set(MULTI_TAB, multiTab);
       state.multiTab = multiTab;
-    },
+    }
   },
   actions: {
     setColor(context, color) {
@@ -81,8 +82,8 @@ const app = {
     },
     setFixedHeader(context, fixedHeader) {
       context.commit("setFixedHeader", fixedHeader);
-    },
-  },
+    }
+  }
 };
 
 export default app;

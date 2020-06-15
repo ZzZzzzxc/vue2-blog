@@ -9,12 +9,14 @@ import {
   AUTO_HIDE_HEADER,
   PRIMARY_COLOR,
   MULTI_TAB,
-  COLOR_WEAK,
+  COLOR_WEAK
 } from "@/store/mutation-type";
 import config from "@/configs/app.config.js";
 
 export function init() {
+  // Token
   store.commit("setToken", Vue.prototype.$ls.get(ACCESS_TOKEN, ""));
+  // app
   store.commit("setTheme", Vue.prototype.$ls.get(NAVTHEME, config.navTheme));
   store.commit("setLayout", Vue.prototype.$ls.get(LAYOUT_MODE, config.layout));
   store.commit(

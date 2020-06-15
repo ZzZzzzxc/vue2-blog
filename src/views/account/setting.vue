@@ -1,25 +1,21 @@
 <template>
-  <div>
-    {{ this.$route.path }}
-    <div @click="add">
-      ADD
-    </div>
-    <div>{{ num }}</div>
-  </div>
+  <PageLayout :title="title"
+    ><div style="height:300vh">{{ $route.path }}</div>
+  </PageLayout>
 </template>
 
 <script>
+import { PageLayout } from "@/layouts/index";
 export default {
   name: "AccountSetting",
   data() {
     return {
-      num: 0
+      title: "个人中心"
     };
   },
-  methods: {
-    add() {
-      this.num++;
-    }
-  }
+  components: { PageLayout },
+  methods: {}
 };
 </script>
+
+<style></style>
