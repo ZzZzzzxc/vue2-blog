@@ -184,8 +184,8 @@
                   slot="actions"
                   size="small"
                   :disabled="layoutMode === 'topmenu'"
-                  :defaultChecked="fixSiderbar"
-                  @change="handleFixSiderbar"
+                  :defaultChecked="fixedSiderbar"
+                  @change="handleFixedSiderbar"
                 />
                 <a-list-item-meta>
                   <div
@@ -244,6 +244,7 @@
 <script>
 import { colorList, updateTheme, updateColorWeak } from "./settingConfig";
 import { mixin, mixinDevice } from "@/utils/mixin";
+import config from "@/configs/app.config.js";
 export default {
   mixins: [mixin, mixinDevice],
   data() {
@@ -253,7 +254,12 @@ export default {
     };
   },
   watch: {},
-  mounted() {},
+  mounted () {
+    updateTheme(this.primaryColor)
+    if (this.colorWeak !== config.colorWeak) {
+      updateColorWeak(this.colorWeak)
+    }
+  },
   methods: {
     onClose() {
       this.visible = false;
@@ -278,7 +284,7 @@ export default {
     handleFixedHeaderHidden(autoHideHeader) {
       this.$store.commit("setAutoHideHeader", autoHideHeader);
     },
-    handleFixSiderbar() {},
+    handleFixedSiderbar() {},
     handleMenuTheme(theme) {
       this.$store.commit("setTheme", theme);
     },

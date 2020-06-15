@@ -7,13 +7,13 @@ import { ACCESS_TOKEN } from "@/store/mutation-type";
 // 创建 axios 实例
 const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_API,
-  timeout: 6000, // 请求超时时间
+  timeout: 6000 // 请求超时时间
 });
 
 const err = () => {};
 
 // 请求拦截
-service.interceptors.request.use((config) => {
+service.interceptors.request.use(config => {
   // 从localstorage中取token
   const token = Vue.prototype.$ls.get(ACCESS_TOKEN);
   if (token) {
@@ -23,7 +23,7 @@ service.interceptors.request.use((config) => {
 }, err);
 
 // 响应拦截
-service.interceptors.response.use((response) => {
+service.interceptors.response.use(response => {
   return response.data;
 }, err);
 

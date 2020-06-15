@@ -31,8 +31,8 @@ export default {
     addRouters: {
       type: Array,
       default: () => [],
-      required: false,
-    },
+      required: false
+    }
   },
   data() {
     this.selectedKeysMap = {};
@@ -40,7 +40,7 @@ export default {
     return {
       menuData: this.getMenuData(this.addRouters),
       selectedKeys: this.selectedKeysMap[this.$route.path],
-      openKeys: this.openKeysMap[this.$route.path],
+      openKeys: this.openKeysMap[this.$route.path]
     };
   },
   watch: {
@@ -61,7 +61,7 @@ export default {
       if (this.isSideMenu()) {
         this.openKeys = val ? [] : this.openKeysMap[this.$route.path];
       }
-    },
+    }
   },
   mounted() {
     if (this.isTopMenu()) {
@@ -80,7 +80,7 @@ export default {
           if (item.children && !item.hideChildrenInMenu) {
             newItem.children = this.getMenuData(item.children, [
               ...parentKeys,
-              item.path,
+              item.path
             ]);
           } else {
             this.getMenuData(
@@ -101,8 +101,8 @@ export default {
         }
       }
       return menuData;
-    },
-  },
+    }
+  }
 };
 </script>
 

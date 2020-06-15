@@ -1,6 +1,7 @@
 <template>
   <div>
-    <template v-if="keepAlive || multiTab || $route.meta.keepAlive">
+    <!-- 多页签模式 || 缓存 -->
+    <template v-if="multiTab || $route.meta.keepAlive">
       <keep-alive>
         <router-view :key="$route.fullPath" />
       </keep-alive>
@@ -15,12 +16,6 @@
 import { mapGetters } from "vuex";
 export default {
   name: "RView",
-  props: {
-    keepAlive: {
-      type: Boolean,
-      default: true,
-    },
-  },
   data() {
     return {};
   },

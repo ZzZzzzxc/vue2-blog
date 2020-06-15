@@ -17,7 +17,7 @@ export default {
     return {
       activeKey: "",
       newTabIndex: 0,
-      pageList: [],
+      pageList: []
     };
   },
   watch: {
@@ -35,7 +35,7 @@ export default {
     },
     activeKey: function(newPathKey) {
       this.$router.push({ path: newPathKey });
-    },
+    }
   },
   methods: {
     onEdit(targetKey, action) {
@@ -49,7 +49,7 @@ export default {
           lastIndex = i - 1;
         }
       });
-      const pageList = this.pageList.filter((pane) => pane.path !== targetKey);
+      const pageList = this.pageList.filter(pane => pane.path !== targetKey);
       if (pageList.length && activeKey === targetKey) {
         if (lastIndex >= 0) {
           activeKey = pageList[lastIndex].path;
@@ -67,17 +67,17 @@ export default {
       }
     },
     toggleClosed(flag) {
-      return new Promise((resolve) => {
+      return new Promise(resolve => {
         this.pageList[0].meta.closable = flag;
         resolve();
       });
-    },
+    }
   },
   created() {
     this.pageList.push(this.$route);
     if (this.pageList.length === 1) {
       this.toggleClosed(false);
     }
-  },
+  }
 };
 </script>

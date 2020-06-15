@@ -14,11 +14,12 @@ const user = {
     // 角色
     role: [],
     // 信息
-    info: {}
+    info: {},
   },
 
   mutations: {
     setToken: (state, token) => {
+      Vue.prototype.$ls.set(ACCESS_TOKEN, token, 7 * 24 * 60 * 60 * 1000);
       state.token = token;
     },
     setName: (state, { name }) => {
@@ -32,7 +33,7 @@ const user = {
     },
     setInfo: (state, info) => {
       state.info = info;
-    }
+    },
   },
 
   actions: {
@@ -42,25 +43,19 @@ const user = {
       return new Promise((resolve, reject) => {
         // 调用登录接口
         login(userInfo)
-          .then(response => {
+          .then((response) => {
             const { data, code, message } = response;
             if (code === 200) {
-              // 登录成功则在localStorage和Vuex中存储token
-              Vue.prototype.$ls.set(
-                ACCESS_TOKEN,
-                data.token,
-                7 * 24 * 60 * 60 * 1000
-              );
               commit("setToken", data.token);
               resolve(response);
             } else {
               notification.error({
                 message: code,
-                description: message
+                description: message,
               });
             }
           })
-          .catch(error => {
+          .catch((error) => {
             reject(error);
           });
       });
@@ -74,24 +69,24 @@ const user = {
       return new Promise((resolve, reject) => {
         // 调用获取用户信息接口
         getUserInfo(token)
-          .then(response => {
+          .then((response) => {
             const data = response.data;
             // 接口返回的数据中包含权限信息
             if (data.role && data.role.permissions.length > 0) {
               const role = data.role;
               role.permissions = data.role.permissions;
-              role.permissions.map(per => {
+              role.permissions.map((per) => {
                 if (
                   per.actionEntitySet != null &&
                   per.actionEntitySet.length > 0
                 ) {
-                  const action = per.actionEntitySet.map(action => {
+                  const action = per.actionEntitySet.map((action) => {
                     return action.action;
                   });
                   per.actionList = action;
                 }
               });
-              role.permissionList = role.permissions.map(permission => {
+              role.permissionList = role.permissions.map((permission) => {
                 return permission.permissionId;
               });
               commit("setRole", data.role);
@@ -105,7 +100,7 @@ const user = {
 
             resolve(response);
           })
-          .catch(error => {
+          .catch((error) => {
             reject(error);
           });
       });
@@ -114,12 +109,12 @@ const user = {
     // 登出
     Logout({ commit, state }) {
       Vue.prototype.$log.store("ACTION", "Logout");
-      return new Promise(resolve => {
+      return new Promise((resolve) => {
         logout(state.token)
-          .then(response => {
+          .then((response) => {
             resolve(response);
           })
-          .catch(error => {
+          .catch((error) => {
             resolve(error);
           })
           .finally(() => {
@@ -128,8 +123,8 @@ const user = {
             Vue.prototype.$ls.remove(ACCESS_TOKEN);
           });
       });
-    }
-  }
+    },
+  },
 };
 
 export default user;

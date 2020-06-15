@@ -13,7 +13,7 @@ const mixin = {
       // 固定头部
       fixedHeader: state => state.app.fixedHeader,
       // 固定侧栏
-      fixSiderbar: state => state.app.fixSiderbar,
+      fixedSiderbar: state => state.app.fixedSiderbar,
       // 内容区宽度
       contentWidth: state => state.app.contentWidth,
       // 自动隐藏头部

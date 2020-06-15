@@ -7,10 +7,10 @@ class Localstorage {
    * Get item
    *
    * @param {string} key
+   * @param {*} result
    * @returns {*}
    */
-  get(key) {
-    let res = null;
+  get(key, result) {
     const item = this.data.getItem(key);
     if (item !== null) {
       try {
@@ -25,10 +25,10 @@ class Localstorage {
 
         this.remove(key);
       } catch (err) {
-        return res;
+        return result;
       }
     }
-    return res;
+    return result;
   }
 
   /**
@@ -42,7 +42,7 @@ class Localstorage {
   set(key, value, expire) {
     const stringifyValue = JSON.stringify({
       value,
-      expire: expire !== null ? new Date().getTime() + expire : null
+      expire: expire !== null ? new Date().getTime() + expire : null,
     });
     this.data.setItem(key, stringifyValue);
   }

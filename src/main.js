@@ -8,10 +8,13 @@ import store from "./store";
 import "./permission";
 import "./styles/global.less";
 
+import { init } from "./utils/init";
+
 Vue.config.productionTip = false;
 
 new Vue({
   router,
   store,
-  render: h => h(App)
+  created: init(),
+  render: (h) => h(App),
 }).$mount("#app");
