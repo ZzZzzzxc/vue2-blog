@@ -23,15 +23,15 @@ export default {
   watch: {
     $route: function(newVal) {
       this.activeKey = newVal.fullPath;
-      if (this.pageList.length === 1) {
-        this.toggleClosed(true);
-      }
       for (let item of this.pageList) {
         if (item.path == newVal.fullPath) {
           return;
         }
       }
       this.pageList.push(newVal);
+      if (this.pageList.length === 2) {
+        this.toggleClosed(true);
+      }
     },
     activeKey: function(newPathKey) {
       this.$router.push({ path: newPathKey });
@@ -67,6 +67,7 @@ export default {
       }
     },
     toggleClosed(flag) {
+      console.log(this.pageList)
       return new Promise(resolve => {
         this.pageList[0].meta.closable = flag;
         resolve();
